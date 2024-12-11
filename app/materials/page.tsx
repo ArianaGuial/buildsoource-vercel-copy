@@ -333,12 +333,14 @@ export default function Materials() {
 
     const addItemToCart = (productId: string, productName: string, productPrice: number) => {
         const existingItemIndex = cart.findIndex(item => item.id === productId);
+        const updatedCart = [...cart];
+
         if (existingItemIndex > -1) {
-            cart[existingItemIndex].quantity += 1;
+            updatedCart[existingItemIndex].quantity += 1;
         } else {
-            cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+            updatedCart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
         }
-        saveCart(cart);
+        saveCart(updatedCart);
     };
 
     const toggleCartDropdown = () => {
