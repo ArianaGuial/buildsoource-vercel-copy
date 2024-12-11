@@ -364,6 +364,11 @@ export default function Materials() {
         window.location.href = '/signin'; // Adjust the path as needed
     };
 
+    const removeItemFromCart = (index: number) => {
+        const updatedCart = cart.filter((_, i) => i !== index);
+        saveCart(updatedCart);
+    };
+
     return (
         <div>
             {/* Navigation Header */}
@@ -394,10 +399,7 @@ export default function Materials() {
                                             cart.map((item, index) => (
                                                 <li key={index}>
                                                     {item.name} - Php {item.price.toFixed(2)} ({item.quantity})
-                                                    <button onClick={() => {
-                                                        const updatedCart = cart.filter((_, i) => i !== index);
-                                                        saveCart(updatedCart);
-                                                    }}>Remove</button>
+                                                    <button onClick={() => removeItemFromCart(index)}>Remove</button>
                                                 </li>
                                             ))
                                         )}
@@ -437,7 +439,7 @@ export default function Materials() {
                     </div>
                     <div className="material-content">
                         <h2>Portland Cement</h2>
-                        <p>High-quality Portland cement suitable for all construction needs. Available in bulk quantities.</p>
+                        <p>High-quality Portland cement suitable for all construction needs.</p>
                         <button className="view-details-btn" onClick={() => openModal('cement')}>View Details</button>
                     </div>
                 </div>
@@ -448,7 +450,7 @@ export default function Materials() {
                     </div>
                     <div className="material-content">
                         <h2>Steel Rebar</h2>
-                        <p>Construction grade steel reinforcement bars available in various sizes and specifications.</p>
+                        <p>Construction grade steel reinforcement bars available in various sizes.</p>
                         <button className="view-details-btn" onClick={() => openModal('steel-rebar')}>View Details</button>
                     </div>
                 </div>
@@ -482,22 +484,6 @@ export default function Materials() {
                                         <span className="currency">Php</span>
                                         <span className="amount">50</span>
                                         <span className="unit">/bag</span>
-                                    </div>
-                                    <div className="product-options">
-                                        <div className="option-group">
-                                            <label>Package Size</label>
-                                            <select>
-                                                <option>50 kg</option>
-                                                <option>25 kg</option>
-                                            </select>
-                                        </div>
-                                        <div className="option-group">
-                                            <label>Grade</label>
-                                            <select>
-                                                <option>Grade 43</option>
-                                                <option>Grade 53</option>
-                                            </select>
-                                        </div>
                                     </div>
                                     <button className="add-to-cart-btn" onClick={() => addItemToCart('cement', 'Portland Cement', 50)}>Add to Cart</button>
                                     <div className="product-description">
@@ -549,7 +535,6 @@ export default function Materials() {
                                 </div>
                             </div>
                         )}
-                        {/* Add other material details similarly... */}
                     </div>
                 </div>
             )}
