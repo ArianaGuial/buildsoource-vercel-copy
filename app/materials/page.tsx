@@ -305,7 +305,6 @@
 //         </div>
 //     );
 // }
-
 "use client";
 
 import Image from 'next/image';
@@ -332,11 +331,18 @@ export default function Materials() {
     const addItemToCart = (productId: string, productName: string, productPrice: number) => {
         const existingItemIndex = cart.findIndex(item => item.id === productId);
         if (existingItemIndex > -1) {
-            cart[existingItemIndex].quantity += 1;
+            const updatedCart = [...cart];
+            updatedCart[existingItemIndex].quantity += 1;
+            saveCart(updatedCart);
         } else {
-            cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+            const newCart = [...cart, { id: productId, name: productName, price: productPrice, quantity: 1 }];
+            saveCart(newCart);
         }
-        saveCart(cart);
+    };
+
+    const removeItemFromCart = (index: number) => {
+        const updatedCart = cart.filter((_, i) => i !== index);
+        saveCart(updatedCart);
     };
 
     const toggleCartDropdown = () => {
@@ -390,10 +396,7 @@ export default function Materials() {
                                             cart.map((item, index) => (
                                                 <li key={index}>
                                                     {item.name} - Php {item.price.toFixed(2)} ({item.quantity})
-                                                    <button onClick={() => {
-                                                        const updatedCart = cart.filter((_, i) => i !== index);
-                                                        saveCart(updatedCart);
-                                                    }}>Remove</button>
+                                                    <button onClick={() => removeItemFromCart(index)}>Remove</button>
                                                 </li>
                                             ))
                                         )}
@@ -492,4 +495,3 @@ export default function Materials() {
         </div>
     );
 }
-
