@@ -75,7 +75,7 @@ export default function Projects() {
 
                 <div className="material-list-item">
                     <div className="material-image">
-                        <Image src="/img/foundation.jpg" alt="foundation" width={300} height={180} />
+                        <Image src="/img/foundation.png" alt="foundation" width={300} height={180} />
                     </div>
                     <div className="material-content">
                         <h2>Foundation Completed</h2>
@@ -85,7 +85,7 @@ export default function Projects() {
 
                 <div className="material-list-item">
                     <div className="material-image">
-                        <Image src="/img/scaffolding.jpg" alt="scaffolding" width={300} height={180} />
+                        <Image src="/img/scaffolding.png" alt="scaffolding" width={300} height={180} />
                     </div>
                     <div className="material-content">
                         <h2>Pending Tasks</h2>
@@ -99,7 +99,7 @@ export default function Projects() {
 
                 <div className="material-list-item">
                     <div className="material-image">
-                        <Image src="/img/completed.jpg" alt="completed" width={300} height={180} />
+                        <Image src="/img/completed.png" alt="completed" width={300} height={180} />
                     </div>
                     <div className="material-content">
                         <h2>Completed Milestones</h2>
