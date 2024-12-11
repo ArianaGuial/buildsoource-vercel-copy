@@ -12,7 +12,7 @@
 //     const [selectedMaterial, setSelectedMaterial] = useState<string | null>(null);
 
 //     useEffect(() => {
-//         // Load cart only in the client-side
+//         // Load cart from localStorage
 //         const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 //         setCart(savedCart);
 //     }, []);
@@ -129,11 +129,11 @@
 
 //                 <div className="material-list-item">
 //                     <div className="material-image">
-//                         <Image src="/img/steelrebar.png" alt="Steel Rebar" width={200} height={200} />
+//                         <Image src="/img/steelrebar.png" alt="Steel" width={200} height={200} />
 //                     </div>
 //                     <div className="material-content">
 //                         <h2>Steel Rebar</h2>
-//                         <p>High-strength steel reinforcement bars for concrete structures.</p>
+//                         <p>Construction grade steel reinforcement bars available in various sizes and specifications.</p>
 //                         <button className="view-details-btn" onClick={() => openModal('steel-rebar')}>View Details</button>
 //                     </div>
 //                 </div>
@@ -148,8 +148,33 @@
 //                         <button className="view-details-btn" onClick={() => openModal('clay-bricks')}>View Details</button>
 //                     </div>
 //                 </div>
+//             </section>
 
-//                 {/* Add other materials similarly... */}
+//             {/* Grid View Section */}
+//             <section className="grid-section">
+//                 <h2>Featured Materials</h2>
+//                 <div className="materials-grid">
+//                     <div className="grid-item">
+//                         <Image src="/img/constructionsand.png" alt="Sand" width={200} height={200} />
+//                         <h3>Construction Sand</h3>
+//                         <p>Fine quality sand for construction use</p>
+//                         <button className="view-details-btn" onClick={() => openModal('sand')}>View Details</button>
+//                     </div>
+
+//                     <div className="grid-item">
+//                         <Image src="/img/gravel.png" alt="Gravel" width={200} height={200} />
+//                         <h3>Gravel</h3>
+//                         <p>Mixed size gravel for various uses</p>
+//                         <button className="view-details-btn" onClick={() => openModal('gravel')}>View Details</button>
+//                     </div>
+
+//                     <div className="grid-item">
+//                         <Image src="/img/constructiontimber.png" alt="Timber" width={200} height={200} />
+//                         <h3>Timber</h3>
+//                         <p>Treated timber for construction</p>
+//                         <button className="view-details-btn" onClick={() => openModal('timber')}>View Details</button>
+//                     </div>
+//                 </div>
 //             </section>
 
 //             {/* Modal for Material Details */}
@@ -163,16 +188,112 @@
 //                                     <Image src="/img/portlandcement.png" alt="Portland Cement" width={200} height={200} />
 //                                 </div>
 //                                 <div className="product-info">
+//                                     <div className="product-tag">Top Seller</div>
 //                                     <h1 className="product-name">Portland Cement</h1>
 //                                     <div className="product-price">
 //                                         <span className="currency">Php</span>
 //                                         <span className="amount">50</span>
 //                                         <span className="unit">/bag</span>
 //                                     </div>
+//                                     <div className="product-options">
+//                                         <div className="option-group">
+//                                             <label>Package Size</label>
+//                                             <select>
+//                                                 <option>50 kg</option>
+//                                                 <option>25 kg</option>
+//                                             </select>
+//                                         </div>
+//                                         <div className="option-group">
+//                                             <label>Grade</label>
+//                                             <select>
+//                                                 <option>Grade 43</option>
+//                                                 <option>Grade 53</option>
+//                                             </select>
+//                                         </div>
+//                                     </div>
 //                                     <button className="add-to-cart-btn" onClick={() => addItemToCart('cement', 'Portland Cement', 50)}>Add to Cart</button>
 //                                     <div className="product-description">
 //                                         <h3>Description</h3>
 //                                         <p>High-quality Portland cement suitable for all construction needs.</p>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         )}
+//                         {selectedMaterial === 'steel-rebar' && (
+//                             <div className="product-details">
+//                                 <div className="product-image">
+//                                     <Image src="/img/steelrebar.png" alt="Steel Rebar" width={200} height={200} />
+//                                 </div>
+//                                 <div className="product-info">
+//                                     <div className="product-tag">Best Seller</div>
+//                                     <h1 className="product-name">Steel Rebar</h1>
+//                                     <div className="product-price">
+//                                         <span className="currency">Php</span>
+//                                         <span className="amount">8</span>
+//                                         <span className="unit">/meter</span>
+//                                     </div>
+//                                     <div className="product-options">
+//                                         <div className="option-group">
+//                                             <label>Diameter</label>
+//                                             <select>
+//                                                 <option>8mm</option>
+//                                                 <option>10mm</option>
+//                                                 <option>12mm</option>
+//                                                 <option>16mm</option>
+//                                             </select>
+//                                         </div>
+//                                         <div className="option-group">
+//                                             <label>Length</label>
+//                                             <select>
+//                                                 <option>6 meters</option>
+//                                                 <option>9 meters</option>
+//                                                 <option>12 meters</option>
+//                                             </select>
+//                                         </div>
+//                                     </div>
+//                                     <button className="add-to-cart-btn" onClick={() => addItemToCart('steel-rebar', 'Steel Rebar', 8)}>Add to Cart</button>
+//                                     <div className="product-description">
+//                                         <h3>Description</h3>
+//                                         <p>High-strength steel reinforcement bars for concrete structures.</p>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         )}
+//                         {selectedMaterial === 'clay-bricks' && (
+//                             <div className="product-details">
+//                                 <div className="product-image">
+//                                     <Image src="/img/claybricks.png" alt="Clay Bricks" width={200} height={200} />
+//                                 </div>
+//                                 <div className="product-info">
+//                                     <div className="product-tag">Premium Quality</div>
+//                                     <h1 className="product-name">Clay Bricks</h1>
+//                                     <div className="product-price">
+//                                         <span className="currency">Php</span>
+//                                         <span className="amount">0.75</span>
+//                                         <span className="unit">/piece</span>
+//                                     </div>
+//                                     <div className="product-options">
+//                                         <div className="option-group">
+//                                             <label>Type</label>
+//                                             <select>
+//                                                 <option>Common Brick</option>
+//                                                 <option>Face Brick</option>
+//                                                 <option>Engineering Brick</option>
+//                                             </select>
+//                                         </div>
+//                                         <div className="option-group">
+//                                             <label>Quantity</label>
+//                                             <select>
+//                                                 <option>100 pieces</option>
+//                                                 <option>500 pieces</option>
+//                                                 <option>1000 pieces</option>
+//                                             </select>
+//                                         </div>
+//                                     </div>
+//                                     <button className="add-to-cart-btn" onClick={() => addItemToCart('clay-bricks', 'Clay Bricks', 0.75)}>Add to Cart</button>
+//                                     <div className="product-description">
+//                                         <h3>Description</h3>
+//                                         <p>High-quality clay bricks perfect for both structural and decorative applications.</p>
 //                                     </div>
 //                                 </div>
 //                             </div>
@@ -197,6 +318,7 @@ export default function Materials() {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedMaterial, setSelectedMaterial] = useState<string | null>(null);
+    const [userDropdownVisible, setUserDropdownVisible] = useState(false);
 
     useEffect(() => {
         // Load cart from localStorage
@@ -221,6 +343,10 @@ export default function Materials() {
 
     const toggleCartDropdown = () => {
         setDropdownVisible(prev => !prev);
+    };
+
+    const toggleUserDropdown = () => {
+        setUserDropdownVisible(prev => !prev);
     };
 
     const openModal = (materialId: string) => {
@@ -280,16 +406,18 @@ export default function Materials() {
                             )}
                         </div>
 
-                        <div className="user-profile" id="user-profile">
-                            <Image src="/img/user.png" alt="user" id="user-icon" width={40} height={40} onClick={toggleCartDropdown} />
+                        <div className="user-profile" id="user-profile" onClick={toggleUserDropdown}>
+                            <Image src="/img/user.png" alt="user" id="user-icon" width={40} height={40} />
                             {/* User Dropdown */}
-                            <div id="user-dropdown" className="user-dropdown">
-                                <div className="user-info">
-                                    <p><strong>Ariana Guial</strong></p>
-                                    <p>guialmariearianalexi@gmail.com</p>
+                            {userDropdownVisible && (
+                                <div id="user-dropdown" className="user-dropdown">
+                                    <div className="user-info">
+                                        <p><strong>Ariana Guial</strong></p>
+                                        <p>guialmariearianalexi@gmail.com</p>
+                                    </div>
+                                    <button id="sign-out-btn" onClick={handleSignOut}>Sign Out</button>
                                 </div>
-                                <button id="sign-out-btn" onClick={handleSignOut}>Sign Out</button>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -333,33 +461,6 @@ export default function Materials() {
                         <h2>Clay Bricks</h2>
                         <p>Premium quality clay bricks perfect for both structural and aesthetic applications.</p>
                         <button className="view-details-btn" onClick={() => openModal('clay-bricks')}>View Details</button>
-                    </div>
-                </div>
-            </section>
-
-            {/* Grid View Section */}
-            <section className="grid-section">
-                <h2>Featured Materials</h2>
-                <div className="materials-grid">
-                    <div className="grid-item">
-                        <Image src="/img/constructionsand.png" alt="Sand" width={200} height={200} />
-                        <h3>Construction Sand</h3>
-                        <p>Fine quality sand for construction use</p>
-                        <button className="view-details-btn" onClick={() => openModal('sand')}>View Details</button>
-                    </div>
-
-                    <div className="grid-item">
-                        <Image src="/img/gravel.png" alt="Gravel" width={200} height={200} />
-                        <h3>Gravel</h3>
-                        <p>Mixed size gravel for various uses</p>
-                        <button className="view-details-btn" onClick={() => openModal('gravel')}>View Details</button>
-                    </div>
-
-                    <div className="grid-item">
-                        <Image src="/img/constructiontimber.png" alt="Timber" width={200} height={200} />
-                        <h3>Timber</h3>
-                        <p>Treated timber for construction</p>
-                        <button className="view-details-btn" onClick={() => openModal('timber')}>View Details</button>
                     </div>
                 </div>
             </section>
@@ -419,25 +520,6 @@ export default function Materials() {
                                         <span className="amount">8</span>
                                         <span className="unit">/meter</span>
                                     </div>
-                                    <div className="product-options">
-                                        <div className="option-group">
-                                            <label>Diameter</label>
-                                            <select>
-                                                <option>8mm</option>
-                                                <option>10mm</option>
-                                                <option>12mm</option>
-                                                <option>16mm</option>
-                                            </select>
-                                        </div>
-                                        <div className="option-group">
-                                            <label>Length</label>
-                                            <select>
-                                                <option>6 meters</option>
-                                                <option>9 meters</option>
-                                                <option>12 meters</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <button className="add-to-cart-btn" onClick={() => addItemToCart('steel-rebar', 'Steel Rebar', 8)}>Add to Cart</button>
                                     <div className="product-description">
                                         <h3>Description</h3>
@@ -458,24 +540,6 @@ export default function Materials() {
                                         <span className="currency">Php</span>
                                         <span className="amount">0.75</span>
                                         <span className="unit">/piece</span>
-                                    </div>
-                                    <div className="product-options">
-                                        <div className="option-group">
-                                            <label>Type</label>
-                                            <select>
-                                                <option>Common Brick</option>
-                                                <option>Face Brick</option>
-                                                <option>Engineering Brick</option>
-                                            </select>
-                                        </div>
-                                        <div className="option-group">
-                                            <label>Quantity</label>
-                                            <select>
-                                                <option>100 pieces</option>
-                                                <option>500 pieces</option>
-                                                <option>1000 pieces</option>
-                                            </select>
-                                        </div>
                                     </div>
                                     <button className="add-to-cart-btn" onClick={() => addItemToCart('clay-bricks', 'Clay Bricks', 0.75)}>Add to Cart</button>
                                     <div className="product-description">
