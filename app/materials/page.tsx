@@ -127,6 +127,28 @@ export default function Materials() {
                     </div>
                 </div>
 
+                <div className="material-list-item">
+                    <div className="material-image">
+                        <Image src="/img/steelrebar.png" alt="Steel Rebar" width={200} height={200} />
+                    </div>
+                    <div className="material-content">
+                        <h2>Steel Rebar</h2>
+                        <p>High-strength steel reinforcement bars for concrete structures.</p>
+                        <button className="view-details-btn" onClick={() => openModal('steel-rebar')}>View Details</button>
+                    </div>
+                </div>
+
+                <div className="material-list-item">
+                    <div className="material-image">
+                        <Image src="/img/claybricks.png" alt="Bricks" width={200} height={200} />
+                    </div>
+                    <div className="material-content">
+                        <h2>Clay Bricks</h2>
+                        <p>Premium quality clay bricks perfect for both structural and aesthetic applications.</p>
+                        <button className="view-details-btn" onClick={() => openModal('clay-bricks')}>View Details</button>
+                    </div>
+                </div>
+
                 {/* Add other materials similarly... */}
             </section>
 
